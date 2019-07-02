@@ -1,4 +1,5 @@
 ﻿using System;
+using TaxCalculator.Application;
 using TaxCalculator.Infrastructure.Models;
 
 namespace TaxCalculator
@@ -7,8 +8,8 @@ namespace TaxCalculator
     {
         static void Main(string[] args)
         {
-            Calculator calculator = new Calculator();
-            calculator.RunApplication();
+            Taxation taxation = new Taxation();
+            taxation.RunApplication();
         }
         
     }

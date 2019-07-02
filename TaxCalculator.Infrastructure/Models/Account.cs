@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaxCalculator.Infrastructure.Interfaces;
-
-namespace TaxCalculator.Infrastructure.Models
+﻿namespace TaxCalculator.Infrastructure.Models
 {
     public class Account
     {

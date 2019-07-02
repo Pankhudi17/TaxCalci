@@ -3,28 +3,22 @@ using TaxCalculator.Implementation;
 using TaxCalculator.Infrastructure.Interfaces;
 using TaxCalculator.Infrastructure.Models;
 
-namespace TaxCalculator
+namespace TaxCalculator.Application
 {
     public class Calculator
     {
-
-        Account account = new Account();
-
+        protected readonly IAccount _account;
         Tax tax = new Tax();
-        
-
-        public void RunApplication()
+        Account account = new Account();
+        public Calculator()
         {
-            AcceptInput();
-            Process();
-            DisplayOutput();
+            this._account = tax;
         }
-        
         public void AcceptInput()
         {
             Console.WriteLine("Tax Calculator");
             Console.WriteLine("Enter Annual Salary :");
-      
+
             account.AnnualSalary = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Enter Bonus :");
@@ -38,19 +32,17 @@ namespace TaxCalculator
 
             Console.WriteLine("Enter Deduction :");
             account.EightyC_Deduction = Convert.ToDouble(Console.ReadLine());
-            
+
         }
-        public void Process()
+
+        public void DisplayOutput()
         {
             var taxableIncome = this._account.GetTaxableIncome(account.Bonus, account.AnnualSalary, account.EightyC_Deduction);
-            Console.WriteLine("Taxable Income "+ taxableIncome);
+            Console.WriteLine("Taxable Income " + taxableIncome);
             var totalTax = this._account.GetTotalTax(account.Age, account.Gender, taxableIncome);
             Console.WriteLine("Total Tax " + totalTax);
             Console.ReadKey();
         }
-        public void DisplayOutput()
-        {
-         
-        }
+
     }
 }

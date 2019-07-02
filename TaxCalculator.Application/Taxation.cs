@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TaxCalculator.Implementation;
 using TaxCalculator.Infrastructure.Interfaces;
+using TaxCalculator.Infrastructure.Models;
 
 namespace TaxCalculator.Application
 {
     public class Taxation
     {
-        protected readonly IAccount _account;
-        public Taxation(IAccount account)
+        
+        Calculator calculator = new Calculator();
+
+        public void RunApplication()
         {
-            this._account = account;
+            calculator.AcceptInput();
+            calculator.DisplayOutput();
         }
     }
 }
