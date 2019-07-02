@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaxCalculator.Infrastructure.Interfaces;
+﻿using TaxCalculator.Infrastructure.Interfaces;
 
 namespace TaxCalculator.Implementation
 {
-    public class Tax : IAccount
+    public class Tax : ITax
     {
         public Tax()
         {
@@ -20,7 +15,9 @@ namespace TaxCalculator.Implementation
 
         public double GetTotalTax(int age, string gender, double taxableIncome)
         {
-            return (taxableIncome * 10) / 100;
+            TaxPercentage taxParcentage = new TaxPercentage(age, gender, taxableIncome);
+            var percentage = taxParcentage.GetTaxPercentage();
+            return (taxableIncome * percentage) / 100;
         }
     }
 }

@@ -7,12 +7,12 @@ namespace TaxCalculator.Application
 {
     public class Calculator
     {
-        protected readonly IAccount _account;
+        protected readonly ITax _tax;
         Tax tax = new Tax();
         Account account = new Account();
         public Calculator()
         {
-            this._account = tax;
+            this._tax = tax;
         }
         public void AcceptInput()
         {
@@ -37,9 +37,9 @@ namespace TaxCalculator.Application
 
         public void DisplayOutput()
         {
-            var taxableIncome = this._account.GetTaxableIncome(account.Bonus, account.AnnualSalary, account.EightyC_Deduction);
+            var taxableIncome = this._tax.GetTaxableIncome(account.Bonus, account.AnnualSalary, account.EightyC_Deduction);
             Console.WriteLine("Taxable Income " + taxableIncome);
-            var totalTax = this._account.GetTotalTax(account.Age, account.Gender, taxableIncome);
+            var totalTax = this._tax.GetTotalTax(account.Age, account.Gender, taxableIncome);
             Console.WriteLine("Total Tax " + totalTax);
             Console.ReadKey();
         }
